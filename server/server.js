@@ -1,5 +1,6 @@
 const dotenv = require('dotenv').config()
 const express = require('express');
+const {errorHandler} = require('./middleware/errorMiddleware')
 const PORT = process.env.PORT || 3001
 const app = express();
 const mongoose = require ('mongoose')
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended: false}))
 
 
 app.use('/api/goals', require('./routes/goalRoutes'))
+app.use(errorHandler)
 
 const friendsRouter = require('./routes/friends');
 app.use('/friends',friendsRouter);

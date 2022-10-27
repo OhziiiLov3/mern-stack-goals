@@ -1,17 +1,19 @@
 const dotenv = require('dotenv').config()
+const colors = require('colors');
 const express = require('express');
 const {errorHandler} = require('./middleware/errorMiddleware')
+const connectDB = require('./config/db')
 const PORT = process.env.PORT || 3001
 const app = express();
-const mongoose = require ('mongoose')
 
+connectDB()
 
 
 // DATABASE CONNECTION 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
-const db = mongoose.connection
-db.on('error',(error)=>console.error(error));
-db.once('open',()=>console.log('Connected to Database'));
+
+// const db = mongoose.connection
+// db.on('error',(error)=>console.error(error));
+// db.once('open',()=>console.log('Connected to Database'));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))

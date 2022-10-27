@@ -9,7 +9,7 @@ const {
 
 router.post('/', registerUser)
 router.post('/login', loginUser)
-router.post('/me', getMe)
+router.get('/me', getMe)
 
 
 

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {
   getGoals,
+  getGoalById,
   setGoal,
   updateGoal,
   deleteGoal,
@@ -12,6 +13,7 @@ const {
 
 // GET GOALS
 router.get("/", getGoals);
+router.get("/:id", getGoalById)
 
 //POST
 router.post("/", setGoal);
